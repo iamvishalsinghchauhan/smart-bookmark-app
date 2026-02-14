@@ -1,36 +1,159 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🔖 Smart Bookmark App
 
-## Getting Started
+A Smart Bookmark App built using **Next.js (App Router)**, **Supabase**, and **Tailwind CSS**.  
+Users can log in using **Google OAuth**, add bookmarks, view only their own bookmarks, delete bookmarks, and see realtime updates without refreshing the page.
 
-First, run the development server:
+---
+
+## 🚀 Live Demo
+
+🔗 Deployed Link: https://smart-bookmark-app1-opal.vercel.app/
+
+---
+
+## 📌 Features
+
+- ✅ Google Login (OAuth only)
+- ✅ Add Bookmark (Title + URL)
+- ✅ View Only Own Bookmarks (User-based)
+- ✅ Delete Bookmarks
+- ✅ Supabase Realtime Updates (Auto refresh without reload)
+- ✅ Responsive UI with Tailwind CSS
+- ✅ Deployed on Vercel
+
+---
+
+## 🛠️ Tech Stack
+
+- **Next.js (App Router)**
+- **Supabase (Auth + Database + Realtime)**
+- **Tailwind CSS**
+- **Google OAuth**
+- **Vercel Deployment**
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Clone the Repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+git clone https://github.com/iamvishalsinghchauhan/smart-bookmark-app.git
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#Challenges faced by development?
+Troubleshooting Guide for Smart Bookmark App
+This guide documents common issues encountered during development and deployment of the Smart Bookmark App, along with their causes and solutions. These problems cover authentication, version control, deployment, and more.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Problem 1: Google Login Error (Redirect URI Mismatch)
+Error:
+Error 400: redirect_uri_mismatch
 
-## Learn More
+Cause:
+Redirect URI was not added in Google Cloud Console.
 
-To learn more about Next.js, take a look at the following resources:
+Solution:
+Added Supabase callback URL in Google OAuth settings:
+https://dbfuqjiiypwvnyjlxdip.supabase.co/auth/v1/callback
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Saved the changes and Google login started working.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Problem 2: GitHub Remote Repository Not Found
+Error:
+Repository not found
 
-## Deploy on Vercel
+Cause:
+Repository was not created properly OR remote URL/repo name was incorrect.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Solution:
+Created the repository on GitHub with the correct name and updated remote URL:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+git remote remove origin
+git remote add origin https://github.com/iamvishalsinghchauhan/smart-bookmark-app.git
+git push -u origin main
+
+
+Problem 3: GitHub Push Rejected (Fetch First)
+Error:
+Updates were rejected because the remote contains work that you do not have locally
+
+Cause:
+GitHub repository already had files (like README.md), so local and remote were not synced.
+
+Solution:
+Pulled remote changes using rebase and then pushed again:
+
+git pull origin main --rebase
+git push -u origin main
+
+Problem 4: Git Rebase Confusion (Interactive Rebase in Progress)
+Issue:
+Git showed:
+interactive rebase in progress
+
+Cause:
+Rebase process was incomplete and Git was waiting for conflict resolution.
+
+Solution:
+Resolved conflicts and completed rebase using:
+
+git rebase --continue
+
+Problem 5: Detached HEAD Issue
+Error:
+You are not currently on a branch
+
+Cause:
+Commit was made while rebase was running, which resulted in detached HEAD state.
+
+Solution:
+Completed the rebase process and returned to main branch:
+
+git rebase --continue
+git checkout main
+git push -u origin main
+
+Problem 6: Merge Conflict in app/page.tsx
+Error:
+CONFLICT (content): Merge conflict in app/page.tsx
+
+Cause:
+Both local and remote had different code in app/page.tsx.
+
+Solution:
+Manually edited app/page.tsx and removed conflict markers:
+
+<<<<<<< HEAD
+=======
+>>>>>>> commit
+
+Then resolved conflict using:
+
+git add app/page.tsx
+git rebase --continue
+
+Problem 7: Vercel URL Not Opening for Others
+Issue:
+Other users got:
+This site can’t be reached
+
+Cause:
+Deployment failed or Vercel build was not completed properly.
+
+Solution:
+Checked Vercel deployment logs, fixed build errors, and redeployed successfully.
+
+Problem 8: Google Login Not Working on Vercel Deployment
+Issue:
+Website opened but Google login failed after deployment.
+
+Cause:
+Supabase authentication redirect URL was not configured for Vercel domain.
+
+Solution:
+Updated Supabase settings:
+
+📌 Supabase → Authentication → URL Configuration
+
+vercel Link: https://smart-bookmark-app1-opal.vercel.app/
+
