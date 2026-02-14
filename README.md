@@ -40,7 +40,10 @@ Users can log in using **Google OAuth**, add bookmarks, view only their own book
 ```bash
 git clone https://github.com/iamvishalsinghchauhan/smart-bookmark-app.git
 
-#Challenges faced by development?
+
+---
+
+###Challenges faced by development?
 Troubleshooting Guide for Smart Bookmark App
 This guide documents common issues encountered during development and deployment of the Smart Bookmark App, along with their causes and solutions. These problems cover authentication, version control, deployment, and more.
 
