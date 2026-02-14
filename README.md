@@ -41,9 +41,7 @@ Users can log in using **Google OAuth**, add bookmarks, view only their own book
 git clone https://github.com/iamvishalsinghchauhan/smart-bookmark-app.git
 
 
----
-
-###Challenges faced by development?
+##Challenges faced while development.
 
 Problem 1: Google Login Error (Redirect URI Mismatch)
 Error:
@@ -132,3 +130,4 @@ Updated Supabase settings:
 
 📌 Supabase → Authentication → URL Configuration
 
+---
